@@ -26,6 +26,8 @@ npx hardhat compile
 ```
 
 4. Alchemy API ve Etherscan API anahtarlarınızı `.env` dosyasına ekleyin:
+```shell
 API_KEY=YourAlchemyApiKey
 PRIVATE_KEY=YourPrivateKey
 ETHER_API=YourEtherscanApiKey
+```
