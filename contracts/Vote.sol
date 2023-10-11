@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.20;
-import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Vote is Ownable{
+contract Vote{
     /*Oy Verme İşlemi:
 
     Her yetkili kişi, sadece bir kere oy verebilmelidir. --
@@ -31,13 +30,22 @@ contract Vote is Ownable{
 
     Katılımcılar:
     Oy verme işlemine katılan kişilerin listesi ve ayrıntıları saklanmalıdır.*/
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only the owner can perform this action.");
+        _;
+    }
 
     mapping(address => bool) isVoted;
     mapping(uint256 => uint256) voteCount;
     mapping(uint256 => string) public candidates;
 
     bool isFinished;
-    string winner;
+    string public winner;
     uint256 candidateCounter;
 
     function addCandidate(uint256 _candidateId, string memory _name) public onlyOwner{
@@ -54,6 +62,7 @@ contract Vote is Ownable{
         require(isFinished == false, "Votes are finished.");
 
         voteCount[_candidateId]++;
+        isVoted[msg.sender] = true;
     }
 
     function getResult(uint256 _candidateId) public view returns(uint256){
@@ -74,5 +83,6 @@ contract Vote is Ownable{
         }
 
         winner = candidates[winnerId];
+        isFinished = true;
     }
 }
