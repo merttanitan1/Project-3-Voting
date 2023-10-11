@@ -1,18 +1,18 @@
 # Sample Hardhat Project
 
-Bu hardhat projesi basitçe bir oy verme sistemi üzerine kurulu bir solidity diliyle yazılan programdır.
+This Hardhat project is a program written in the Solidity language, designed for a simple voting system.
 
-## Kurulum
+## Installation
 
-Projeyi çalıştırmak için aşağıdaki adımları izleyin:
+To run the project, follow the steps below:
 
-1. Proje klasörünü klonlayın:
+1. Clone the project folder:
 ```shell
 git clone https://github.com/merttanitan1/Project-3-Voting.git
 cd Project-3-Voting
 ```
 
-2. Gerekli bağımlılıkları yükleyin:
+2. Install the necessary dependencies:
 ```shell
 npx hardhat help
 npx hardhat test
@@ -20,12 +20,12 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.js
 ```
-3. Akıllı kontratı derleyin:
+3. Compile the smart contract:
 ```shell
 npx hardhat compile
 ```
 
-4. Alchemy API ve Etherscan API anahtarlarınızı `.env` dosyasına ekleyin:
+4. Add your Alchemy API and Etherscan API keys to the .env file:
 ```shell
 API_KEY=YourAlchemyApiKey
 PRIVATE_KEY=YourPrivateKey
